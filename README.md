@@ -3,7 +3,7 @@ I am currently graduate student in the Department of Mathematics at the Universi
   
   
 - Website: [https://www.mlellis.com/](https://www.mlellis.com/)
-- Resume: [Resume](https://www.mlellis.com/uploads/Michael_Ellis_Resume.pdf)
+- Download my [Resume](https://www.mlellis.com/uploads/Michael_Ellis_Resume.pdf)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
