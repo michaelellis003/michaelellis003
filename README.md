@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Michael Ellis</h1>
-- 👨‍💻 All of my projects are available at [mlellis.com](mlellis.com)
+I am currently graduate student in the Department of Mathematics at the University of Arkansas. My main interest is in using probability theory and statistical methods to improve decision making.
 
 - 📝 I regularly write articles on [https://www.mlellis.com/](https://www.mlellis.com/)
 
