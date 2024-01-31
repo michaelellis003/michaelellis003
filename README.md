@@ -1,2 +1,4 @@
 <h1 align="center">Hi, I'm Michael!</h1>
-I am currently a Data Scientist at The Home Depot on the conversational AI team. Previously, I was a PhD student in the Department of Mathematics at the University of Arkansas. Generally, I am interested in using probability theory and statistical and machine learning methods to improve decision making. In particular, I am interested in time efficient full and approximate Bayesian methods for large time-series, spatial, and spatio-temporal datasets.
+I’m a Data Scientist at The Home Depot, currently working on the Conversational AI team, focused on optimizing our contact center experience.
+
+Very generally, I am interested in how probability theory can be used to quantify uncertainty and improve decision making. As a part of the Conversational AI team at The Home Depot, my recent work has been focused on generative AI and Large Language Models.
