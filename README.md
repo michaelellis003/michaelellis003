@@ -25,5 +25,5 @@ I also completed two years of coursework toward a PhD in Mathematics, which incl
 ---
 
 ## Get in Touch
-![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) [michaelellis003@gmail.com](mailto:michaelellis003@gmail.com)  
-![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) [linkedin.com/in/michaelellis](https://www.linkedin.com/in/michaelellis)  
+![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) (michaelellis003@gmail.com](mailto:michaelellis003@gmail.com)  
+![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) (linkedin.com/in/michaelellis](https://www.linkedin.com/in/michaelellis)  
