@@ -22,7 +22,7 @@ Hi, I'm Michael Ellis, a **Senior Data Scientist** who bridges the worlds of **d
 I completed my academic studies at the University of Arkansas, where I earned:
 - A **Bachelor’s degree in Mathematics**.
 - A **Master’s degree in Statistics**, with a research focus on scalable Bayesian methodologies for high-dimensional data.
-  - My Master’s thesis, [**Sequential Monte Carlo Methods for Hidden Markov Models**](https://scholarworks.uark.edu/cgi/viewcontent.cgi?article=4519&context=etd), explored computational techniques for efficiently performing Bayesian inference on sequential data.
+  - My Master’s thesis, [**Sequential Monte Carlo Methods for Hidden Markov Models**](https://scholarworks.uark.edu/cgi/viewcontent.cgi?article=4519&context=etd){:target="_blank" rel="noopener"}, explored computational techniques for efficiently performing Bayesian inference on sequential data.
 
 I also completed two years of coursework toward a PhD in Mathematics, which included:
 - Measure-Theory Probability
