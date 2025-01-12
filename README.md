@@ -4,7 +4,7 @@ Hi, I'm Michael Ellis, a **Senior Data Scientist** who bridges the worlds of **d
 
 - **Generative AI**: Exploring cutting-edge approaches to deploy LLMs in real-world applications.
 - **Bayesian Methodology**: Applying scalable Bayesian methods to high-dimensional data.
-- **Experimental Design**: Creating robust A/B testing frameworks to drive business strategies and product development.
+- **Experimental Design**: Creating robust trustworthy controlled experimentation (**A/B testing**) frameworks to drive business strategies and product development.
 
 ## 💼 Industry Experience
 
