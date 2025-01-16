@@ -4,13 +4,14 @@ Hi, I'm Michael Ellis, a **Senior Data Scientist** who bridges the worlds of **d
 
 - **Generative AI**: Exploring cutting-edge approaches to **Generative AI**, **natural language processing (NLP)**, and **large language models (LLMs)** in real-world applications.
 - **Bayesian Methodology**: Applying scalable Bayesian methods to high-dimensional data.
-- **Experimental Design**: Creating robust trustworthy controlled experimentation (**A/B testing**) frameworks to drive business strategies and product development.
+- **Experimental Design**: Creating robust trustworthy controlled experimentation (**A/B testing**) and causal inference frameworks to drive business strategies and product development.
 
 ## 💼 Industry Experience
 
 ### The Home Depot (Data Scientist & Senior Data Scientist)
 - Collaborated with a cross-functional team—including product managers, engineers, and UX designers—to enhance the customer experience within our contact center.
 - Leveraged cutting-edge technologies in generative AI, large language models (LLMs), and natural language processing (NLP) to design, deploy, and maintain a task-oriented dialogue system capable of autonomously answering customer questions and completing tasks without human intervention.
+- Led the design and implementation of a robust A/B testing framework—from hypothesis formulation and sample size determination to automated result analysis—driving data-driven decisions and enabling accurate causal inferences when experiments were infeasible.
 
 ### Black Hills Energy (Data Scientist)
 - Developed a large-scale forecasting system to predict natural gas consumption, utilizing scalable Bayesian methods to generate probabilistic forecasts with quantified uncertainty.
