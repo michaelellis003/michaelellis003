@@ -39,4 +39,4 @@ I also completed two years of coursework toward a PhD in Mathematics, which incl
 
 [![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/michaelellis003) 
 
-[![Personal Website Badge](https://img.shields.io/badge/Personal%20Website-Visit%20Now-blue?style=for-the-badge)](https://your-personal-website.com)
+[![Personal Website Badge](https://img.shields.io/badge/Personal%20Website-blue?style=for-the-badge)](https://your-personal-website.com)
