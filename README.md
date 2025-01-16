@@ -10,7 +10,7 @@ Hi, I'm Michael Ellis, a **Senior Data Scientist** who bridges the worlds of **d
 
 ### The Home Depot (Data Scientist & Senior Data Scientist)
 - Collaborated with a cross-functional team—including product managers, engineers, and UX designers—to enhance the customer experience within our contact center.
-- Leveraged cutting-edge technologies in generative AI, large language models (LLMs), and natural language processing (NLP) to design and maintain a task-oriented dialogue system capable of autonomously answering customer questions and completing tasks without human intervention.
+- Leveraged cutting-edge technologies in generative AI, large language models (LLMs), and natural language processing (NLP) to design, deploy, and maintain a task-oriented dialogue system capable of autonomously answering customer questions and completing tasks without human intervention.
 
 ### Black Hills Energy (Data Scientist)
 - Developed a large-scale forecasting system to predict natural gas consumption, utilizing scalable Bayesian methods to generate probabilistic forecasts with quantified uncertainty.
