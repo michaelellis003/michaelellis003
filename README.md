@@ -1,6 +1,6 @@
 ## 👋 About Me
 
-Hi, I'm Michael Ellis, a Senior Data Scientist with expertise spanning the fields of data science, statistics, and machine learning engineering. I’m passionate about leveraging probability theory to quantify uncertainty and about building scalable, robust scientific software that supports data-driven decision-making and solves complex problems. I’m passionate about leveraging probability theory to quantify uncertainty and about building scalable, robust scientific software that supports data-driven decision-making abd solve complex problems. Over the years, my work has revolved around:
+Hi, I'm Michael Ellis, a Senior Data Scientist with expertise spanning the fields of data science, statistics, and machine learning engineering. I’m passionate about leveraging probability theory to quantify uncertainty and about building scalable, robust scientific software that supports data-driven decision-making and solves complex problems. I’m passionate about leveraging probability theory to quantify uncertainty to support data-driven decision-making and about building scalable, robust scientific software to solve complex problems. Over the years, my work has revolved around:
 
 - **Generative AI**: Exploring cutting-edge approaches to **Generative AI**, **natural language processing (NLP)**, and **large language models (LLMs)** in real-world applications.
 - **Bayesian Methodology**: Applying scalable **Bayesian** methods to high-dimensional data.
