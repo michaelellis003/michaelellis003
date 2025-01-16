@@ -35,12 +35,4 @@ I also completed two years of coursework toward a PhD in Mathematics, which incl
 
 ## 📬 Get in Touch
 
-[![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:michaelellis003@gmail.com) 
-
-[![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/michaelellis003) 
-
-[![Personal Website Badge](https://img.shields.io/badge/www.mlellis.com-blue?style=for-the-badge)](https://www.mlellis.com)
-
-<a href="https://your-personal-website.com" target="_blank">
-  <img src="https://img.shields.io/badge/Personal%20Website-blue?style=for-the-badge" alt="Personal Website Badge" />
-</a>
+[![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:michaelellis003@gmail.com) [![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/michaelellis003) [![Personal Website Badge](https://img.shields.io/badge/www.mlellis.com-blue?style=for-the-badge)](https://www.mlellis.com)
