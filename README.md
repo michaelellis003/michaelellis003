@@ -27,7 +27,7 @@ I completed my academic studies at the University of Arkansas, where I earned:
 I also completed two years of coursework toward a PhD in Mathematics, which included:
 - Measure-Theory Probability
 - Mathematical Statistics
-- Experimental Design
+- Experimental Design and Causal Inference
 - Computational Statistics
 - Real Analysis
 - Partial Differential Equations
