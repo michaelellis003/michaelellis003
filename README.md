@@ -2,15 +2,15 @@
 
 Hi, I'm Michael Ellis, a Senior Data Scientist with expertise spanning data science, statistics, and machine learning engineering. I'm passionate about leveraging probability theory to quantify uncertainty—enabling data-driven decision-making—and building scalable, robust scientific software to solve complex problems. Over the years, my work has revolved around:
 
-- **Generative AI**: Exploring cutting-edge approaches to **Generative AI**, **natural language processing (NLP)**, and **large language models (LLMs)** in real-world applications.
-- **Bayesian Methodology**: Applying scalable **Bayesian** methods to high-dimensional data.
-- **Experimental Design**: Creating robust trustworthy controlled experimentation (**A/B testing**) and **causal inference** frameworks to drive business strategies and product development.
-
+- **Conversational AI**: Building task-oriented dialogue AI agents answering questions and completing tasks without human intervention.
+- **Experimental Design**: Creating robust trustworthy controlled experimentation (A/B testing) and causal inference frameworks to drive business strategies and product development.
+- **Bayesian Methodology**: Applying scalable Bayesian methods to high-dimensional data.
+  
 ## 💼 Industry Experience
 
 ### The Home Depot (Data Scientist & Senior Data Scientist)
 - Collaborated with a cross-functional team—including product managers, engineers, and UX designers—to enhance the customer experience within our contact center.
-- Leveraged cutting-edge technologies in generative AI, large language models (LLMs), and natural language processing (NLP) to design, deploy, and maintain a task-oriented dialogue system capable of autonomously answering customer questions and completing tasks without human intervention.
+- Leveraged cutting-edge technologies in generative AI, large language models (LLMs), retrival-agumented generation (RAG) and natural language processing (NLP) to design, deploy, and maintain a task-oriented dialogue AI agents answering questions and completing tasks without human intervention.
 - Led the design and implementation of a robust A/B testing framework—from hypothesis formulation and sample size determination to automated result analysis—driving data-driven decisions and enabling accurate causal inferences when experiments were infeasible.
 
 ### Black Hills Energy (Data Scientist)
