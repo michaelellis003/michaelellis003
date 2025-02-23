@@ -3,7 +3,7 @@
 Hi, I'm Michael Ellis, a Senior Data Scientist with expertise spanning data science, statistics, and machine learning engineering. I'm passionate about leveraging probability theory to quantify uncertainty—enabling data-driven decision-making—and building scalable, robust scientific software to solve complex problems. Over the years, my work has revolved around:
 
 - **Conversational AI**: Building task-oriented dialogue AI agents answering questions and completing tasks without human intervention.
-- **Experimental Design**: Creating robust trustworthy controlled experimentation (A/B testing) and causal inference frameworks to drive business strategies and product development.
+- **Experimentation**: Creating robust trustworthy controlled experimentation (A/B testing) and causal inference frameworks to drive business strategies and product development.
 - **Bayesian Methodology**: Applying scalable Bayesian methods to high-dimensional data.
   
 ## 💼 Industry Experience
