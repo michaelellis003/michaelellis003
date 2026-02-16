@@ -1,0 +1,55 @@
+{
+  "experiment": {
+    "name": "github-profile-ab-test",
+    "start_date": null,
+    "end_date": null,
+    "duration_days": 90,
+    "status": "pending"
+  },
+  "variants": {
+    "A": {
+      "name": "Structured Professional",
+      "readme": "ab-testing/variants/README-A.md",
+      "bio": "Staff Data Scientist | Bayesian Inference \u00b7 Time Series \u00b7 Conversational AI | Python, JAX, PyTorch, R",
+      "pins": [
+        "sktime",
+        "gaussian-process",
+        "variational-inference",
+        "LMT",
+        "uv-python-template",
+        "sequential-monte-carlo-hmm"
+      ]
+    },
+    "B": {
+      "name": "Narrative Story-Driven",
+      "readme": "ab-testing/variants/README-B.md",
+      "bio": "Building probabilistic ML systems at Walmart | Contributing to sktime, NumPyro & HuggingFace",
+      "pins": [
+        "LMT",
+        "gaussian-process",
+        "sequential-monte-carlo-hmm",
+        "sktime",
+        "numpyro",
+        "evaluate"
+      ]
+    },
+    "C": {
+      "name": "Minimal Proof-Based",
+      "readme": "ab-testing/variants/README-C.md",
+      "bio": "Staff Data Scientist | Bayesian inference & time series | Open source: sktime, NumPyro, HuggingFace",
+      "pins": [
+        "gaussian-process",
+        "variational-inference",
+        "LMT",
+        "uv-python-template",
+        "sequential-monte-carlo-hmm",
+        "dirichlet-process-mixtures"
+      ]
+    }
+  },
+  "current": {
+    "variant": null,
+    "date": null
+  },
+  "history": []
+}

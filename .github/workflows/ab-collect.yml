@@ -1,0 +1,185 @@
+name: AB Test — Collect Metrics
+
+on:
+  schedule:
+    - cron: "0 6 * * *"  # Daily at 06:00 UTC (6h after rotate)
+  workflow_dispatch:       # Manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PROFILE_PAT }}
+
+      - name: Determine yesterday's date and variant
+        id: meta
+        run: |
+          YESTERDAY=$(date -u -d "yesterday" +%Y-%m-%d 2>/dev/null || date -u -v-1d +%Y-%m-%d)
+          echo "date=$YESTERDAY" >> "$GITHUB_OUTPUT"
+
+          # Look up yesterday's variant from history
+          VARIANT=$(jq -r --arg d "$YESTERDAY" \
+            '.history[] | select(.date == $d) | .variant' \
+            ab-testing/config.json)
+
+          if [ -z "$VARIANT" ] || [ "$VARIANT" = "null" ]; then
+            echo "No variant found for $YESTERDAY — skipping"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "variant=$VARIANT" >> "$GITHUB_OUTPUT"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "Yesterday ($YESTERDAY) was variant $VARIANT"
+          fi
+
+      - name: Check if already collected
+        if: steps.meta.outputs.skip != 'true'
+        id: check
+        run: |
+          YESTERDAY="${{ steps.meta.outputs.date }}"
+          if grep -q "^$YESTERDAY," ab-testing/metrics.csv; then
+            echo "already_collected=true" >> "$GITHUB_OUTPUT"
+            echo "Data for $YESTERDAY already exists — skipping"
+          else
+            echo "already_collected=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Collect profile traffic
+        if: steps.meta.outputs.skip != 'true' && steps.check.outputs.already_collected != 'true'
+        id: profile
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_PAT }}
+        run: |
+          YESTERDAY="${{ steps.meta.outputs.date }}"
+
+          # Profile views and uniques (from traffic endpoint)
+          TRAFFIC=$(gh api /repos/michaelellis003/michaelellis003/traffic/views)
+          PROFILE_VIEWS=$(echo "$TRAFFIC" | jq --arg d "${YESTERDAY}T00:00:00Z" \
+            '[.views[] | select(.timestamp == $d)] | if length > 0 then .[0].count else 0 end')
+          PROFILE_UNIQUES=$(echo "$TRAFFIC" | jq --arg d "${YESTERDAY}T00:00:00Z" \
+            '[.views[] | select(.timestamp == $d)] | if length > 0 then .[0].uniques else 0 end')
+
+          echo "profile_views=$PROFILE_VIEWS" >> "$GITHUB_OUTPUT"
+          echo "profile_uniques=$PROFILE_UNIQUES" >> "$GITHUB_OUTPUT"
+          echo "Profile: $PROFILE_VIEWS views, $PROFILE_UNIQUES uniques"
+
+      - name: Collect repo traffic
+        if: steps.meta.outputs.skip != 'true' && steps.check.outputs.already_collected != 'true'
+        id: repos
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_PAT }}
+        run: |
+          YESTERDAY="${{ steps.meta.outputs.date }}"
+          TIMESTAMP="${YESTERDAY}T00:00:00Z"
+
+          # Helper function to extract yesterday's view/unique count
+          get_views() {
+            local OWNER=$1
+            local REPO=$2
+            local DATA
+            DATA=$(gh api "/repos/${OWNER}/${REPO}/traffic/views" 2>/dev/null || echo '{"views":[]}')
+            VIEWS=$(echo "$DATA" | jq --arg d "$TIMESTAMP" \
+              '[.views[] | select(.timestamp == $d)] | if length > 0 then .[0].count else 0 end')
+            UNIQUES=$(echo "$DATA" | jq --arg d "$TIMESTAMP" \
+              '[.views[] | select(.timestamp == $d)] | if length > 0 then .[0].uniques else 0 end')
+            echo "${VIEWS},${UNIQUES}"
+          }
+
+          get_clones() {
+            local OWNER=$1
+            local REPO=$2
+            local DATA
+            DATA=$(gh api "/repos/${OWNER}/${REPO}/traffic/clones" 2>/dev/null || echo '{"clones":[]}')
+            CLONES=$(echo "$DATA" | jq --arg d "$TIMESTAMP" \
+              '[.clones[] | select(.timestamp == $d)] | if length > 0 then .[0].count else 0 end')
+            UNIQUES=$(echo "$DATA" | jq --arg d "$TIMESTAMP" \
+              '[.clones[] | select(.timestamp == $d)] | if length > 0 then .[0].uniques else 0 end')
+            echo "${CLONES},${UNIQUES}"
+          }
+
+          # Own repos
+          SKTIME=$(get_views michaelellis003 sktime)
+          GP=$(get_views michaelellis003 gaussian-process)
+          LMT=$(get_views michaelellis003 LMT)
+          VI=$(get_views michaelellis003 variational-inference)
+          UVT=$(get_views michaelellis003 uv-python-template)
+          SMC=$(get_views michaelellis003 sequential-monte-carlo-hmm)
+          DPM=$(get_views michaelellis003 dirichlet-process-mixtures)
+          NUMPYRO_FORK=$(get_views michaelellis003 numpyro)
+          EVAL_FORK=$(get_views michaelellis003 evaluate)
+
+          # Clones for popular repos
+          SKTIME_CLONES=$(get_clones michaelellis003 sktime)
+          LMT_CLONES=$(get_clones michaelellis003 LMT)
+
+          echo "sktime=$SKTIME" >> "$GITHUB_OUTPUT"
+          echo "gp=$GP" >> "$GITHUB_OUTPUT"
+          echo "lmt=$LMT" >> "$GITHUB_OUTPUT"
+          echo "vi=$VI" >> "$GITHUB_OUTPUT"
+          echo "uvt=$UVT" >> "$GITHUB_OUTPUT"
+          echo "smc=$SMC" >> "$GITHUB_OUTPUT"
+          echo "dpm=$DPM" >> "$GITHUB_OUTPUT"
+          echo "numpyro_fork=$NUMPYRO_FORK" >> "$GITHUB_OUTPUT"
+          echo "eval_fork=$EVAL_FORK" >> "$GITHUB_OUTPUT"
+          echo "sktime_clones=$SKTIME_CLONES" >> "$GITHUB_OUTPUT"
+          echo "lmt_clones=$LMT_CLONES" >> "$GITHUB_OUTPUT"
+
+      - name: Collect followers and referrer
+        if: steps.meta.outputs.skip != 'true' && steps.check.outputs.already_collected != 'true'
+        id: social
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_PAT }}
+        run: |
+          FOLLOWERS=$(gh api /user | jq '.followers')
+          echo "followers=$FOLLOWERS" >> "$GITHUB_OUTPUT"
+
+          # Top referrer for profile repo
+          REFERRERS=$(gh api /repos/michaelellis003/michaelellis003/traffic/popular/referrers 2>/dev/null || echo '[]')
+          TOP_REF=$(echo "$REFERRERS" | jq -r 'if length > 0 then .[0].referrer else "none" end')
+          TOP_REF_COUNT=$(echo "$REFERRERS" | jq 'if length > 0 then .[0].count else 0 end')
+          echo "top_referrer=$TOP_REF" >> "$GITHUB_OUTPUT"
+          echo "top_referrer_count=$TOP_REF_COUNT" >> "$GITHUB_OUTPUT"
+          echo "Followers: $FOLLOWERS, Top referrer: $TOP_REF ($TOP_REF_COUNT)"
+
+      - name: Append to metrics.csv
+        if: steps.meta.outputs.skip != 'true' && steps.check.outputs.already_collected != 'true'
+        run: |
+          DATE="${{ steps.meta.outputs.date }}"
+          VARIANT="${{ steps.meta.outputs.variant }}"
+          PV="${{ steps.profile.outputs.profile_views }}"
+          PU="${{ steps.profile.outputs.profile_uniques }}"
+          FOLLOWERS="${{ steps.social.outputs.followers }}"
+          TOP_REF="${{ steps.social.outputs.top_referrer }}"
+          TOP_REF_COUNT="${{ steps.social.outputs.top_referrer_count }}"
+
+          ROW="${DATE},${VARIANT},${PV},${PU},${FOLLOWERS},${TOP_REF},${TOP_REF_COUNT}"
+          ROW="${ROW},${{ steps.repos.outputs.sktime }}"
+          ROW="${ROW},${{ steps.repos.outputs.gp }}"
+          ROW="${ROW},${{ steps.repos.outputs.lmt }}"
+          ROW="${ROW},${{ steps.repos.outputs.vi }}"
+          ROW="${ROW},${{ steps.repos.outputs.uvt }}"
+          ROW="${ROW},${{ steps.repos.outputs.smc }}"
+          ROW="${ROW},${{ steps.repos.outputs.dpm }}"
+          ROW="${ROW},${{ steps.repos.outputs.numpyro_fork }}"
+          ROW="${ROW},${{ steps.repos.outputs.eval_fork }}"
+          ROW="${ROW},${{ steps.repos.outputs.sktime_clones }}"
+          ROW="${ROW},${{ steps.repos.outputs.lmt_clones }}"
+
+          echo "$ROW" >> ab-testing/metrics.csv
+          echo "Appended row for $DATE (variant $VARIANT)"
+
+      - name: Commit and push
+        if: steps.meta.outputs.skip != 'true' && steps.check.outputs.already_collected != 'true'
+        run: |
+          DATE="${{ steps.meta.outputs.date }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ab-testing/metrics.csv
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "AB test: collect metrics for $DATE"
+          git push
