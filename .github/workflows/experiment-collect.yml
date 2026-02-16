@@ -1,4 +1,4 @@
-name: AB Test — Collect Metrics
+name: Profile Experiment — Collect Metrics
 
 on:
   schedule:
@@ -26,7 +26,7 @@ jobs:
           # Look up yesterday's variant from history
           VARIANT=$(jq -r --arg d "$YESTERDAY" \
             '.history[] | select(.date == $d) | .variant' \
-            ab-testing/config.json)
+            profile-experiment/config.json)
 
           if [ -z "$VARIANT" ] || [ "$VARIANT" = "null" ]; then
             echo "No variant found for $YESTERDAY — skipping"
@@ -42,7 +42,7 @@ jobs:
         id: check
         run: |
           YESTERDAY="${{ steps.meta.outputs.date }}"
-          if grep -q "^$YESTERDAY," ab-testing/metrics.csv; then
+          if grep -q "^$YESTERDAY," profile-experiment/metrics.csv; then
             echo "already_collected=true" >> "$GITHUB_OUTPUT"
             echo "Data for $YESTERDAY already exists — skipping"
           else
@@ -170,7 +170,7 @@ jobs:
           ROW="${ROW},${{ steps.repos.outputs.sktime_clones }}"
           ROW="${ROW},${{ steps.repos.outputs.lmt_clones }}"
 
-          echo "$ROW" >> ab-testing/metrics.csv
+          echo "$ROW" >> profile-experiment/metrics.csv
           echo "Appended row for $DATE (variant $VARIANT)"
 
       - name: Commit and push
@@ -179,7 +179,7 @@ jobs:
           DATE="${{ steps.meta.outputs.date }}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ab-testing/metrics.csv
+          git add profile-experiment/metrics.csv
           git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git commit -m "AB test: collect metrics for $DATE"
+          git commit -m "experiment: collect metrics for $DATE"
           git push

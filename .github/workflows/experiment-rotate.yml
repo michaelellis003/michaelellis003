@@ -1,4 +1,4 @@
-name: AB Test — Rotate Variant
+name: Profile Experiment — Rotate Variant
 
 on:
   schedule:
@@ -37,14 +37,14 @@ jobs:
       - name: Read previous variant
         id: previous
         run: |
-          PREV=$(jq -r '.current.variant // "none"' ab-testing/config.json)
+          PREV=$(jq -r '.current.variant // "none"' profile-experiment/config.json)
           echo "variant=$PREV" >> "$GITHUB_OUTPUT"
           echo "Previous variant: $PREV"
 
       - name: Copy variant README
         run: |
           VARIANT="${{ steps.draw.outputs.variant }}"
-          cp "ab-testing/variants/README-${VARIANT}.md" README.md
+          cp "profile-experiment/variants/README-${VARIANT}.md" README.md
           echo "Copied README-${VARIANT}.md to README.md"
 
       - name: Update bio via GitHub API
@@ -52,7 +52,7 @@ jobs:
           GH_TOKEN: ${{ secrets.PROFILE_PAT }}
         run: |
           VARIANT="${{ steps.draw.outputs.variant }}"
-          BIO=$(jq -r ".variants.${VARIANT}.bio" ab-testing/config.json)
+          BIO=$(jq -r ".variants.${VARIANT}.bio" profile-experiment/config.json)
           gh api -X PATCH /user -f bio="$BIO"
           echo "Updated bio to: $BIO"
 
@@ -64,19 +64,19 @@ jobs:
           # Update current state
           jq --arg v "$VARIANT" --arg d "$TODAY" \
             '.current.variant = $v | .current.date = $d' \
-            ab-testing/config.json > tmp.json && mv tmp.json ab-testing/config.json
+            profile-experiment/config.json > tmp.json && mv tmp.json profile-experiment/config.json
 
           # Append to history
           jq --arg v "$VARIANT" --arg d "$TODAY" \
             '.history += [{"date": $d, "variant": $v}]' \
-            ab-testing/config.json > tmp.json && mv tmp.json ab-testing/config.json
+            profile-experiment/config.json > tmp.json && mv tmp.json profile-experiment/config.json
 
           # Set experiment start date if not set
-          START=$(jq -r '.experiment.start_date // "null"' ab-testing/config.json)
+          START=$(jq -r '.experiment.start_date // "null"' profile-experiment/config.json)
           if [ "$START" = "null" ]; then
             jq --arg d "$TODAY" \
               '.experiment.start_date = $d | .experiment.status = "running"' \
-              ab-testing/config.json > tmp.json && mv tmp.json ab-testing/config.json
+              profile-experiment/config.json > tmp.json && mv tmp.json profile-experiment/config.json
           fi
 
       - name: Check if pins need changing
@@ -88,8 +88,8 @@ jobs:
           if [ "$PREV" = "none" ] || [ "$PREV" = "$VARIANT" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            CURR_PINS=$(jq -c ".variants.${VARIANT}.pins" ab-testing/config.json)
-            PREV_PINS=$(jq -c ".variants.${PREV}.pins" ab-testing/config.json)
+            CURR_PINS=$(jq -c ".variants.${VARIANT}.pins" profile-experiment/config.json)
+            PREV_PINS=$(jq -c ".variants.${PREV}.pins" profile-experiment/config.json)
             if [ "$CURR_PINS" = "$PREV_PINS" ]; then
               echo "changed=false" >> "$GITHUB_OUTPUT"
             else
@@ -109,7 +109,7 @@ jobs:
 
           gh issue create \
             --title "Pin swap needed: Variant $VARIANT ($TODAY)" \
-            --label "ab-test" \
+            --label "profile-experiment" \
             --body "Today's variant is **$VARIANT**. Please update pinned repos to:
 
           $PINS
@@ -122,7 +122,7 @@ jobs:
           TODAY="${{ steps.draw.outputs.date }}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md ab-testing/config.json
+          git add README.md profile-experiment/config.json
           git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git commit -m "AB test: variant $VARIANT for $TODAY"
+          git commit -m "experiment: variant $VARIANT for $TODAY"
           git push

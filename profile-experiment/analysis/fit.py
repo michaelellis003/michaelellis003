@@ -208,7 +208,7 @@ def model_comparison(df, seed=0):
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Fit model to collected A/B test data")
+    parser = argparse.ArgumentParser(description="Fit model to collected experiment data")
     parser.add_argument(
         "--compare", action="store_true", help="Also fit ZINB and compare via LOO"
     )

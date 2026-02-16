@@ -1,4 +1,4 @@
-"""NumPyro model specification for GitHub profile A/B test.
+"""NumPyro model specification for GitHub profile experiment.
 
 Negative Binomial regression with day-of-week effects, smooth time trend,
 and randomized variant treatment effects. If posterior predictive checks

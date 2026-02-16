@@ -1,6 +1,6 @@
 {
   "experiment": {
-    "name": "github-profile-ab-test",
+    "name": "github-profile-experiment",
     "start_date": null,
     "end_date": null,
     "duration_days": 90,
@@ -9,7 +9,7 @@
   "variants": {
     "A": {
       "name": "Structured Professional",
-      "readme": "ab-testing/variants/README-A.md",
+      "readme": "profile-experiment/variants/README-A.md",
       "bio": "Staff Data Scientist | Bayesian Inference \u00b7 Time Series \u00b7 Conversational AI | Python, JAX, PyTorch, R",
       "pins": [
         "sktime",
@@ -22,7 +22,7 @@
     },
     "B": {
       "name": "Narrative Story-Driven",
-      "readme": "ab-testing/variants/README-B.md",
+      "readme": "profile-experiment/variants/README-B.md",
       "bio": "Building probabilistic ML systems at Walmart | Contributing to sktime, NumPyro & HuggingFace",
       "pins": [
         "LMT",
@@ -35,7 +35,7 @@
     },
     "C": {
       "name": "Minimal Proof-Based",
-      "readme": "ab-testing/variants/README-C.md",
+      "readme": "profile-experiment/variants/README-C.md",
       "bio": "Staff Data Scientist | Bayesian inference & time series | Open source: sktime, NumPyro, HuggingFace",
       "pins": [
         "gaussian-process",

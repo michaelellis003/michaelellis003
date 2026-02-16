@@ -1,4 +1,4 @@
-"""Simulation-based power analysis for the GitHub profile A/B test.
+"""Simulation-based power analysis for the GitHub profile experiment.
 
 McElreath's workflow Step 4: Before collecting data, determine whether
 the experiment can detect plausible effect sizes given expected traffic.
@@ -188,7 +188,7 @@ def plot_power_curve(results):
     ax.axhline(y=0.8, color="red", linestyle="--", alpha=0.5, label="80% power")
     ax.set_xlabel("Rate Ratio (Variant B / Variant A)")
     ax.set_ylabel("Power (P(detect effect | effect exists))")
-    ax.set_title("Power Analysis: GitHub Profile A/B Test\n(90 days, ~2 views/day baseline)")
+    ax.set_title("Power Analysis: GitHub Profile Experiment\n(90 days, ~2 views/day baseline)")
     ax.set_ylim(0, 1.05)
     ax.set_xticks(multipliers)
     ax.set_xticklabels([f"{m}x\n({l})" for m, l in zip(multipliers, labels)])
@@ -205,7 +205,7 @@ def plot_power_curve(results):
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Power analysis for profile A/B test")
+    parser = argparse.ArgumentParser(description="Power analysis for profile experiment")
     parser.add_argument(
         "--n-sims", type=int, default=100, help="Simulations per effect size"
     )
