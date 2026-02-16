@@ -6,8 +6,8 @@ Staff Data Scientist specializing in **Bayesian inference**, **time series forec
 
 - [**LMT**](https://github.com/michaelellis003/LMT) — PyTorch implementation of transformer-based language models (GPT) for pretraining and fine-tuning
 - [**uv-python-template**](https://github.com/michaelellis003/uv-python-template) — Production-ready Python package template with uv, ruff, and GitHub Actions
-- [**gaussian_process**](https://github.com/michaelellis003/gaussian_process) — Bayesian spatial inference with Gaussian processes in R
-- [**Variational-Inference**](https://github.com/michaelellis003/Variational-Inference) — Variational Bayes and CAVI algorithms for approximate inference
+- [**gaussian-process**](https://github.com/michaelellis003/gaussian-process) — Bayesian spatial inference with Gaussian processes in R
+- [**variational-inference**](https://github.com/michaelellis003/variational-inference) — Variational Bayes and CAVI algorithms for approximate inference
 
 ### Open source
 
