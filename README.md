@@ -35,4 +35,4 @@ Staff Data Scientist specializing in **Bayesian inference**, **time series forec
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:michaelellis003@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/michaelellis003)
-[![Website](https://img.shields.io/badge/mlellis.com-228B22?style=for-the-badge&logo=safari&logoColor=white)](https://www.mlellis.com)
+[![Website](https://img.shields.io/badge/michael.likelilab.com-228B22?style=for-the-badge&logo=safari&logoColor=white)](https://michael.likelilab.com)
