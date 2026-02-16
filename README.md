@@ -2,11 +2,11 @@
 
 Staff Data Scientist specializing in **Bayesian inference**, **time series forecasting**, and **conversational AI**. I build scalable probabilistic models and contribute to open source ML tooling.
 
-### What I'm working on
+### Open source
 
-- Contributing new forecast accuracy metrics to [**sktime**](https://github.com/sktime/sktime) (time series ML framework)
-- Adding [PSIS diagnostics](https://github.com/pyro-ppl/numpyro/pull/2139) to [**NumPyro**](https://github.com/pyro-ppl/numpyro) (probabilistic programming with JAX)
-- Building dynamic linear models and time series tools in JAX
+- [**sktime**](https://github.com/sktime/sktime) — new forecast accuracy metrics for the time series ML framework
+- [**NumPyro**](https://github.com/pyro-ppl/numpyro) — PSIS k-hat diagnostics for variational inference
+- [**HuggingFace Evaluate**](https://github.com/huggingface/evaluate) — label distribution entropy metric
 
 ### Tech stack
 
