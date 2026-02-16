@@ -1,6 +1,6 @@
 ## Hi, I'm Michael Ellis
 
-Staff Data Scientist specializing in **Bayesian inference**, **time series forecasting**, and **conversational AI**. I work at the intersection of data science and software engineering. I help companies use data to make better decisions and create better products.
+Staff Data Scientist specializing in **Bayesian inference**, **time series forecasting**, and **conversational AI**. I work at the intersection of data science and software engineering — building production ML systems, publishing packages, and contributing to open source.
 
 ### Featured work
 
