@@ -1,38 +1,47 @@
-## 👋 About Me
+## Hi, I'm Michael Ellis
 
-Hi, I'm Michael Ellis, a Senior Data Scientist with expertise spanning data science, statistics, and machine learning engineering. I'm passionate about leveraging probability theory to quantify uncertainty—enabling data-driven decision-making—and building scalable, robust scientific software to solve complex problems. Over the years, my work has revolved around:
+Staff Data Scientist specializing in **Bayesian inference**, **time series forecasting**, and **conversational AI**. I build scalable probabilistic models and contribute to open source ML tooling.
 
-- **Conversational AI**: Building task-oriented dialogue AI agents that are capable of answering questions and completing tasks without human intervention.
-- **Experimentation**: Creating robust trustworthy controlled experimentation (A/B testing) and causal inference frameworks to drive business strategies and product development.
-- **Bayesian Methodology**: Applying scalable Bayesian methods to high-dimensional data.
-  
-## 💼 Industry Experience
+### What I'm working on
 
-### The Home Depot (Data Scientist & Senior Data Scientist)
-- Collaborated with a cross-functional team—including product managers, engineers, and UX designers—to enhance the customer experience within our contact center.
-- Leveraged cutting-edge technologies in generative AI, large language models (LLMs), retrival-agumented generation (RAG) and natural language processing (NLP) to design, deploy, and maintain a task-oriented dialogue AI agents answering questions and completing tasks without human intervention.
-- Led the design and implementation of a robust A/B testing framework—from hypothesis formulation and sample size determination to automated result analysis—driving data-driven decisions and enabling accurate causal inferences when experiments were infeasible.
+- Contributing new forecast accuracy metrics to [**sktime**](https://github.com/sktime/sktime) (time series ML framework)
+- Adding [PSIS diagnostics](https://github.com/pyro-ppl/numpyro/pull/2139) to [**NumPyro**](https://github.com/pyro-ppl/numpyro) (probabilistic programming with JAX)
+- Building dynamic linear models and time series tools in JAX
 
-### Black Hills Energy (Data Scientist)
-- Developed a large-scale forecasting system to predict natural gas consumption, utilizing scalable Bayesian methods to generate probabilistic forecasts with quantified uncertainty.
-- Built an R Shiny application that allowed stakeholders to visualize and monitor forecasts in real-time.
-- Communicated insights to senior leadership, directly informing resource planning and strategic decision-making.
+### Tech stack
 
-## 🎓 Education
+**Languages**
 
-I completed my academic studies at the University of Arkansas, where I earned:
-- A **Bachelor’s degree in Mathematics**.
-- A **Master’s degree in Statistics**, with a research focus on scalable Bayesian methodologies for high-dimensional data.
-  - My Master’s thesis, [**Sequential Monte Carlo Methods for Hidden Markov Models**](https://scholarworks.uark.edu/cgi/viewcontent.cgi?article=4519&context=etd), explored computational techniques for efficiently performing Bayesian inference on sequential data.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
-I also completed two years of coursework toward a PhD in Mathematics, which included:
-- Measure-Theory Probability
-- Mathematical Statistics
-- Experimental Design and Causal Inference
-- Computational Statistics
-- Real Analysis
-- Partial Differential Equations
+**ML & Statistics**
 
-## 📬 Get in Touch
+![JAX](https://img.shields.io/badge/JAX-A435F0?style=flat-square)
+![NumPyro](https://img.shields.io/badge/NumPyro-EE4C2C?style=flat-square)
+![scikit--learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![sktime](https://img.shields.io/badge/sktime-1B9E77?style=flat-square)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
 
-[![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:michaelellis003@gmail.com) [![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/michaelellis003) [![Personal Website Badge](https://img.shields.io/badge/www.mlellis.com-%23228B22?style=for-the-badge)](https://www.mlellis.com)
+**Tools**
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
+![uv](https://img.shields.io/badge/uv-DE5FE9?style=flat-square)
+
+### Featured work
+
+- [**gaussian_process**](https://github.com/michaelellis003/gaussian_process) — Bayesian spatial inference with Gaussian processes in R
+- [**Variational-Inference**](https://github.com/michaelellis003/Variational-Inference) — Variational Bayes and CAVI algorithms for approximate inference
+- [**Sequential-Inference-for-Hidden-Markov-Models**](https://github.com/michaelellis003/Sequential-Inference-for-Hidden-Markov-Models) — Master's thesis on SMC methods for Bayesian sequential inference
+- [**uv-python-template**](https://github.com/michaelellis003/uv-python-template) — Production-ready Python package template with uv, ruff, and GitHub Actions
+
+### Connect
+
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:michaelellis003@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/michaelellis003)
+[![Website](https://img.shields.io/badge/mlellis.com-228B22?style=for-the-badge&logo=safari&logoColor=white)](https://www.mlellis.com)
