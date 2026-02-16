@@ -1,16 +1,16 @@
 {
   "experiment": {
     "name": "github-profile-experiment",
-    "start_date": null,
+    "start_date": "2026-02-16",
     "end_date": null,
     "duration_days": 90,
-    "status": "pending"
+    "status": "running"
   },
   "variants": {
     "A": {
       "name": "Structured Professional",
       "readme": "profile-experiment/variants/README-A.md",
-      "bio": "Staff Data Scientist | Bayesian Inference \u00b7 Time Series \u00b7 Conversational AI | Python, JAX, PyTorch, R",
+      "bio": "Staff Data Scientist | Bayesian Inference · Time Series · Conversational AI | Python, JAX, PyTorch, R",
       "pins": [
         "sktime",
         "gaussian-process",
@@ -48,8 +48,13 @@
     }
   },
   "current": {
-    "variant": null,
-    "date": null
+    "variant": "A",
+    "date": "2026-02-16"
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-02-16",
+      "variant": "A"
+    }
+  ]
 }
