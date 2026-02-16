@@ -8,31 +8,6 @@ Staff Data Scientist specializing in **Bayesian inference**, **time series forec
 - [**NumPyro**](https://github.com/pyro-ppl/numpyro) — PSIS k-hat diagnostics for variational inference
 - [**HuggingFace Evaluate**](https://github.com/huggingface/evaluate) — label distribution entropy metric
 
-### Tech stack
-
-**Languages**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-
-**ML & Statistics**
-
-![JAX](https://img.shields.io/badge/JAX-A435F0?style=flat-square)
-![NumPyro](https://img.shields.io/badge/NumPyro-EE4C2C?style=flat-square)
-![scikit--learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
-![sktime](https://img.shields.io/badge/sktime-1B9E77?style=flat-square)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-
-**Tools**
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
-![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
-![uv](https://img.shields.io/badge/uv-DE5FE9?style=flat-square)
-
 ### Featured work
 
 - [**LMT**](https://github.com/michaelellis003/LMT) — PyTorch implementation of transformer-based language models (GPT) for pretraining and fine-tuning
