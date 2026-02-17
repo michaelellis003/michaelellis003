@@ -49,11 +49,15 @@
   },
   "current": {
     "variant": "A",
-    "date": "2026-02-16"
+    "date": "2026-02-17"
   },
   "history": [
     {
       "date": "2026-02-16",
+      "variant": "A"
+    },
+    {
+      "date": "2026-02-17",
       "variant": "A"
     }
   ]
