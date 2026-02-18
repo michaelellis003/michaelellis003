@@ -1,35 +1,22 @@
 ## Hi, I'm Michael Ellis
 
-Staff Data Scientist specializing in **Bayesian inference**, **time series forecasting**, and **conversational AI**. I work at the intersection of data science and software engineering — building production ML systems, publishing packages, and contributing to open source.
+*What happens when you put a Bayesian statistician in a room with production ML systems?*
 
-### Currently
+I'm a Staff Data Scientist at Walmart, where I build probabilistic ML systems and conversational AI that serve millions of customers. But the work I'm most proud of happens in the open.
 
-- Building probabilistic ML systems and conversational AI at **Walmart**
-- Contributing forecast accuracy metrics to [**sktime**](https://github.com/sktime/sktime)
-- Developing PSIS diagnostics for [**NumPyro**](https://github.com/pyro-ppl/numpyro)
+I started contributing to open source because I kept finding gaps — a missing metric in sktime, a diagnostic that should exist in NumPyro, an evaluation tool HuggingFace didn't have yet. So I built them. Each contribution started with a real problem I hit at work and ended with a merged PR that helps the whole community.
 
-### Tech Stack
+### What I'm Building
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![JAX](https://img.shields.io/badge/JAX-A435F0?style=flat-square)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![NumPyro](https://img.shields.io/badge/NumPyro-4B8BBE?style=flat-square)
-![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+**[LMT](https://github.com/michaelellis003/LMT)** — I wanted to deeply understand transformer architectures, so I implemented GPT from scratch in PyTorch. Not a tutorial — a full pretraining and fine-tuning pipeline you can actually use.
 
-### Featured Work
+**[gaussian-process](https://github.com/michaelellis003/gaussian-process)** — Spatial inference is underserved in the R ecosystem. This package implements Gaussian process regression with proper uncertainty quantification for geospatial applications.
 
-- [**LMT**](https://github.com/michaelellis003/LMT) — PyTorch implementation of transformer-based language models (GPT) for pretraining and fine-tuning
-- [**gaussian-process**](https://github.com/michaelellis003/gaussian-process) — Bayesian spatial inference with Gaussian processes in R
-- [**variational-inference**](https://github.com/michaelellis003/variational-inference) — Variational Bayes and CAVI algorithms for approximate inference
-- [**sequential-monte-carlo-hmm**](https://github.com/michaelellis003/sequential-monte-carlo-hmm) — SMC particle filtering for hidden Markov models
-- [**uv-python-template**](https://github.com/michaelellis003/uv-python-template) — Production-ready Python package template with uv, ruff, and GitHub Actions
+**[sequential-monte-carlo-hmm](https://github.com/michaelellis003/sequential-monte-carlo-hmm)** — Particle filtering for hidden Markov models. Born from a need to do online inference in non-Gaussian state space models where Kalman filters break down.
 
-### Open Source Contributions
+### Open Source
 
-- [**sktime**](https://github.com/sktime/sktime) — New forecast accuracy metrics for the time series ML framework
-- [**NumPyro**](https://github.com/pyro-ppl/numpyro) — PSIS k-hat diagnostics for variational inference
-- [**HuggingFace Evaluate**](https://github.com/huggingface/evaluate) — Label distribution entropy metric
+I contribute to the tools I use daily. In **sktime**, I've added multiple forecast accuracy metrics that were missing from the framework. In **NumPyro**, I implemented PSIS k-hat diagnostics so practitioners can assess when their variational approximations fail. In **HuggingFace Evaluate**, I built a label distribution entropy metric for detecting dataset imbalance.
 
 ### Connect
 
