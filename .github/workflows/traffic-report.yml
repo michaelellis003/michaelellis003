@@ -1,0 +1,191 @@
+name: Traffic Report
+
+on:
+  schedule:
+    - cron: "0 6 * * *"      # Daily at 06:00 UTC — collect metrics
+    - cron: "0 7 * * 1"      # Weekly on Mondays at 07:00 UTC — email summary
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "Which job to run"
+        required: true
+        default: "collect"
+        type: choice
+        options:
+          - collect
+          - email
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    if: github.event.schedule != '0 7 * * 1' && (github.event_name != 'workflow_dispatch' || inputs.job == 'collect')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PROFILE_PAT }}
+
+      - name: Determine yesterday's date
+        id: meta
+        run: |
+          YESTERDAY=$(date -u -d "yesterday" +%Y-%m-%d 2>/dev/null || date -u -v-1d +%Y-%m-%d)
+          echo "date=$YESTERDAY" >> "$GITHUB_OUTPUT"
+
+      - name: Check if already collected
+        id: check
+        run: |
+          YESTERDAY="${{ steps.meta.outputs.date }}"
+          if grep -q "^$YESTERDAY," metrics.csv; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Data for $YESTERDAY already exists — skipping"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Collect traffic data
+        if: steps.check.outputs.skip != 'true'
+        id: traffic
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_PAT }}
+        run: |
+          YESTERDAY="${{ steps.meta.outputs.date }}"
+          TIMESTAMP="${YESTERDAY}T00:00:00Z"
+
+          # Helper: extract a day's views/uniques from traffic endpoint
+          get_views() {
+            local REPO=$1
+            local DATA
+            DATA=$(gh api "/repos/michaelellis003/${REPO}/traffic/views" 2>/dev/null || echo '{"views":[]}')
+            VIEWS=$(echo "$DATA" | jq --arg d "$TIMESTAMP" \
+              '[.views[] | select(.timestamp == $d)] | if length > 0 then .[0].count else 0 end')
+            UNIQUES=$(echo "$DATA" | jq --arg d "$TIMESTAMP" \
+              '[.views[] | select(.timestamp == $d)] | if length > 0 then .[0].uniques else 0 end')
+            echo "${VIEWS},${UNIQUES}"
+          }
+
+          # Helper: extract a day's clones/unique clones
+          get_clones() {
+            local REPO=$1
+            local DATA
+            DATA=$(gh api "/repos/michaelellis003/${REPO}/traffic/clones" 2>/dev/null || echo '{"clones":[]}')
+            CLONES=$(echo "$DATA" | jq --arg d "$TIMESTAMP" \
+              '[.clones[] | select(.timestamp == $d)] | if length > 0 then .[0].count else 0 end')
+            UNIQUES=$(echo "$DATA" | jq --arg d "$TIMESTAMP" \
+              '[.clones[] | select(.timestamp == $d)] | if length > 0 then .[0].uniques else 0 end')
+            echo "${CLONES},${UNIQUES}"
+          }
+
+          # Profile views
+          PROFILE=$(get_views michaelellis003)
+
+          # Followers
+          FOLLOWERS=$(gh api /user | jq '.followers')
+
+          # Repo views
+          SKTIME=$(get_views sktime)
+          GP=$(get_views gaussian-process)
+          LMT=$(get_views LMT)
+          VI=$(get_views variational-inference)
+          UVT=$(get_views uv-python-template)
+
+          # Clones
+          SKTIME_CLONES=$(get_clones sktime)
+          LMT_CLONES=$(get_clones LMT)
+
+          ROW="${YESTERDAY},${PROFILE},${FOLLOWERS},${SKTIME},${GP},${LMT},${VI},${UVT},${SKTIME_CLONES},${LMT_CLONES}"
+
+          echo "$ROW" >> metrics.csv
+          echo "row=$ROW" >> "$GITHUB_OUTPUT"
+          echo "Appended: $ROW"
+
+      - name: Commit and push
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metrics.csv
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "traffic: collect metrics for ${{ steps.meta.outputs.date }}"
+          git push
+
+  email:
+    if: github.event.schedule == '0 7 * * 1' || (github.event_name == 'workflow_dispatch' && inputs.job == 'email')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build weekly summary
+        id: summary
+        run: |
+          # Get last 7 rows (excluding header)
+          ROWS=$(tail -n +2 metrics.csv | tail -7)
+
+          if [ -z "$ROWS" ]; then
+            echo "body=No traffic data collected in the past 7 days." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Count days collected
+          DAYS=$(echo "$ROWS" | wc -l | tr -d ' ')
+          FIRST_DATE=$(echo "$ROWS" | head -1 | cut -d',' -f1)
+          LAST_DATE=$(echo "$ROWS" | tail -1 | cut -d',' -f1)
+
+          # Sum profile views and uniques (cols 2,3)
+          TOTAL_VIEWS=$(echo "$ROWS" | awk -F',' '{s+=$2} END {print s}')
+          TOTAL_UNIQUES=$(echo "$ROWS" | awk -F',' '{s+=$3} END {print s}')
+
+          # Latest follower count (col 4)
+          FOLLOWERS=$(echo "$ROWS" | tail -1 | cut -d',' -f4)
+
+          # Sum repo views (cols 5-14, pairs of views/uniques)
+          SKTIME_V=$(echo "$ROWS" | awk -F',' '{s+=$5} END {print s}')
+          GP_V=$(echo "$ROWS" | awk -F',' '{s+=$7} END {print s}')
+          LMT_V=$(echo "$ROWS" | awk -F',' '{s+=$9} END {print s}')
+          VI_V=$(echo "$ROWS" | awk -F',' '{s+=$11} END {print s}')
+          UVT_V=$(echo "$ROWS" | awk -F',' '{s+=$13} END {print s}')
+
+          # Sum clones (cols 15-18)
+          SKTIME_CL=$(echo "$ROWS" | awk -F',' '{s+=$15} END {print s}')
+          LMT_CL=$(echo "$ROWS" | awk -F',' '{s+=$17} END {print s}')
+
+          BODY=$(cat <<EOF
+          Weekly GitHub Traffic Report ($FIRST_DATE to $LAST_DATE)
+          =========================================================
+
+          Profile
+            Views: $TOTAL_VIEWS  |  Unique visitors: $TOTAL_UNIQUES
+            Followers: $FOLLOWERS
+
+          Repo Views (total for the week)
+            sktime:                  $SKTIME_V
+            gaussian-process:        $GP_V
+            LMT:                     $LMT_V
+            variational-inference:   $VI_V
+            uv-python-template:      $UVT_V
+
+          Clones (total for the week)
+            sktime:  $SKTIME_CL
+            LMT:     $LMT_CL
+          EOF
+          )
+
+          # Write to file for the email step (avoids quoting issues)
+          echo "$BODY" > /tmp/email_body.txt
+          echo "subject=GitHub Traffic Report: $FIRST_DATE to $LAST_DATE" >> "$GITHUB_OUTPUT"
+
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: ${{ steps.summary.outputs.subject }}
+          to: ${{ secrets.EMAIL_USERNAME }}
+          from: GitHub Traffic Bot <${{ secrets.EMAIL_USERNAME }}>
+          body: file:///tmp/email_body.txt
