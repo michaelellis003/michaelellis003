@@ -125,9 +125,11 @@ jobs:
           ROWS=$(tail -n +2 metrics.csv | tail -7)
 
           if [ -z "$ROWS" ]; then
-            echo "body=No traffic data collected in the past 7 days." >> "$GITHUB_OUTPUT"
+            echo "No traffic data collected yet — skipping email"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          echo "skip=false" >> "$GITHUB_OUTPUT"
 
           # Count days collected
           DAYS=$(echo "$ROWS" | wc -l | tr -d ' ')
@@ -178,6 +180,7 @@ jobs:
           echo "subject=GitHub Traffic Report: $FIRST_DATE to $LAST_DATE" >> "$GITHUB_OUTPUT"
 
       - name: Send email
+        if: steps.summary.outputs.skip != 'true'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
