@@ -48,8 +48,8 @@
     }
   },
   "current": {
-    "variant": "B",
-    "date": "2026-02-18"
+    "variant": "C",
+    "date": "2026-02-19"
   },
   "history": [
     {
@@ -63,6 +63,10 @@
     {
       "date": "2026-02-18",
       "variant": "B"
+    },
+    {
+      "date": "2026-02-19",
+      "variant": "C"
     }
   ]
 }
