@@ -4,7 +4,7 @@ Staff Data Scientist specializing in **Bayesian inference**, **time series forec
 
 ### Currently
 
-- Building probabilistic ML systems and conversational AI at **Walmart**
+- Staff Data Scientist working on Causal Inference and building AI agents at Walmart
 - Contributing forecast accuracy metrics to [**sktime**](https://github.com/sktime/sktime)
 - Developing PSIS diagnostics for [**NumPyro**](https://github.com/pyro-ppl/numpyro)
 
