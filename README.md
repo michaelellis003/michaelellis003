@@ -23,7 +23,7 @@ Staff Data Scientist specializing in **Bayesian inference**, **causal inference*
 
 ### Featured Work
 
-- [**uv-python-template**](https://github.com/michaelellis003/uv-python-template) — Production-ready Python package template with uv, ruff, GitHub Actions, and a [published CLI](https://pypi.org/project/pypkgkit/)
+- [**pypkgkit**](https://github.com/michaelellis003/uv-python-template) — CLI tool and template for scaffolding production-ready Python packages ([PyPI](https://pypi.org/project/pypkgkit/))
 - [**LMT**](https://github.com/michaelellis003/LMT) — PyTorch implementation of transformer-based language models (GPT) for pretraining and fine-tuning
 - [**gaussian-process**](https://github.com/michaelellis003/gaussian-process) — Bayesian spatial inference with Gaussian processes in R
 - [**variational-inference**](https://github.com/michaelellis003/variational-inference) — Variational Bayes and CAVI algorithms for approximate inference
