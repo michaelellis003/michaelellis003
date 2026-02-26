@@ -1,6 +1,6 @@
 ## Hi, I'm Michael Ellis
 
-Staff Data Scientist specializing in **Bayesian inference**, **causal inference**, and **time series forecasting**. I build production ML systems, publish Python packages, and contribute to open source.
+Staff Data Scientist specializing in **Bayesian inference**, **causal inference**, and **time series forecasting**.
 
 ### Featured Work
 
