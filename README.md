@@ -1,6 +1,6 @@
 ## Hi, I'm Michael Ellis
 
-Staff Data Scientist specializing in **Bayesian inference**, **causal inference**, and **time series forecasting**.
+I'm a data scientist with a math and statistics background who likes to build things. My work spans Bayesian methods and causal inference to LLMs, GenAI and AI Agents. I believe good data science requires good software engineering.
 
 ### Featured Work
 
