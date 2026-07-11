@@ -13,8 +13,6 @@ A collection of open source projects I have contributed to:
 
 - [**NumPyro**](https://github.com/pyro-ppl/numpyro) - [PSIS k-hat diagnostics for variational inference](https://github.com/pyro-ppl/numpyro/pull/2139)
 - [**EconML**](https://github.com/py-why/econml) - [DRTester method fix](https://github.com/py-why/EconML/pull/1025)
-- [**sktime**](https://github.com/sktime/sktime) - [Forecast accuracy metrics from Chen & Yang (2004)](https://github.com/sktime/sktime/pull/9364)
-- [**HuggingFace Evaluate**](https://github.com/huggingface/evaluate) - [Label distribution entropy metric](https://github.com/huggingface/evaluate/pull/733)
 
 ### Tech Stack
 
