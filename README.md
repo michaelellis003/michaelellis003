@@ -7,6 +7,7 @@ Hello! I'm Michael, a data scientist with a math and statistics background who l
 - [**lmxlab**](https://github.com/michaelellis003/lmxlab) - Language models for Apple Silicon on MLX ([docs](https://michaelellis003.github.io/lmxlab/))
 - [**smcjax**](https://github.com/michaelellis003/smcjax) - Sequential Monte Carlo and particle filtering in JAX ([docs](https://michaelellis003.github.io/smcjax/))
 - [**pypkgkit**](https://github.com/michaelellis003/pypkgkit) - CLI tool for scaffolding production-ready Python packages ([PyPI](https://pypi.org/project/pypkgkit/))
+- [**paperboy**](https://github.com/michaelellis003/paperboy) - An MCP server that organizes research papers in Zotero and sends them to your e-reader from Claude.
 
 ### Open Source Contributions
 A collection of open source projects I have contributed to:
