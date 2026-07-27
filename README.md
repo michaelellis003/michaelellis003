@@ -16,7 +16,6 @@ A collection of open source projects I have contributed to:
 - [**EconML**](https://github.com/py-why/econml) - [DRTester method fix](https://github.com/py-why/EconML/pull/1025)
 - [**sklearn**](https://github.com/sktime/sktime) - [Adds 7 forecast accuracy metrics from Section 4 of Chen & Yang (2004) "Assessing Forecast Accuracy Measures"](https://github.com/sktime/sktime/pull/9364)
 - [**jax-mps**](https://github.com/tillahoffmann/jax-mps) - [Makes scans 2.2× faster by avoiding a redundant copy on every loop iteration](https://github.com/tillahoffmann/jax-mps/pull/220)
-](https://github.com/tillahoffmann/jax-mps/pull/220)
 
 ### Tech Stack
 
